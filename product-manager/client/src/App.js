@@ -1,12 +1,12 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-import ProductInput from './components/ProductInput';
-import axios from 'axios';
+import Main from './views/Main';
+
 
 function App() {
   return (
     <div className="App">
-      <ProductInput/>
+      <Main />
     </div>
   );
 }

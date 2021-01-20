@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 
-const ProductInput = () => {
+const ProductInput = ({products, setProducts}) => {
     const [title, setTitle] = useState('Enter Product Title');
-    const [price, setPrice] = useState('Enter Price');
+    const [price, setPrice] = useState();
     const [description, setDescription] = useState('Enter brief description');
 
     const handleSubmit = (e) => {
@@ -16,7 +16,6 @@ const ProductInput = () => {
         .then(res => console.log(res))
         .catch( err => console.log(err))
 }
-        
     return(
         <form>
             <h1 className='text-primary m-3'>Product Manager</h1>
@@ -32,7 +31,7 @@ const ProductInput = () => {
                 <label className = 'text-primary m-1' >Description:</label>
                 <input className= 'form-control d-inline col-3' type='text' onChange = {(e) => setDescription(e.target.value)}/>
             </p>
-            <button className= 'btn-success btn-md' onClick = {handleSubmit}>Add product</button>
+            <button className= 'btn-success btn-md m-1' onClick = {handleSubmit}>Add product</button>
         </form>
     )
 }
