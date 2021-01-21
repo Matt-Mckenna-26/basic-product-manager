@@ -1,9 +1,10 @@
+import { navigate } from '@reach/router';
 import axios from 'axios';
 import React, {useState} from 'react';
 
 const ProductInput = ({products, setProducts}) => {
     const [title, setTitle] = useState('Enter Product Title');
-    const [price, setPrice] = useState();
+    const [price, setPrice] = useState(Number);
     const [description, setDescription] = useState('Enter brief description');
 
     const handleSubmit = (e) => {
