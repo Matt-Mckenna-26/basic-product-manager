@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react' 
 import axios from 'axios';
+import ProductForm from '../components/ProductForm'
 import { navigate, Link } from '@reach/router';
 
 const Update = (props) => {
@@ -8,7 +9,6 @@ const Update = (props) => {
     const [description, setDescription] = useState('Update the description here');
     const [title, setTitle] = useState('Update the title here');
     const {id} = props ;
-    
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/products/${id}`)
         .then(res =>{
@@ -19,8 +19,7 @@ const Update = (props) => {
         } )
         .catch(err => console.log(err))
     }, [])
-
-    const updateProduct = e => {
+    const handleSubmit = e => {
         e.preventDefault();
         axios.put(`http://localhost:8000/api/products/update/${id}`,{
             title,
@@ -32,31 +31,8 @@ const Update = (props) => {
     }
     return(
         <div>
-            <h1>Update, {thisProduct.title} </h1>
-            <form onSubmit={updateProduct}>
-            <p>
-                    <label>Update Title, currently {thisProduct.title}</label><br />
-                    <input type="text" 
-                    name="title" 
-                    value={title} 
-                    onChange={(e) => {setTitle(e.target.value) }} />
-                </p>
-                <p>
-                    <label>Update Price, currently ${thisProduct.price}</label><br />
-                    <input type="text" 
-                    name="price" 
-                    value={price} 
-                    onChange={(e) => {setPrice(e.target.value) }} />
-                </p>
-                <p>
-                    <label>Update Description, Currently "{thisProduct.description}"</label><br />
-                    <input type="text" 
-                    name="description"
-                    value={description} 
-                    onChange={(e) => { setDescription(e.target.value) }} />
-                </p>
-                <input type="submit" />
-            </form>
+            <ProductForm handleSubmit={handleSubmit} title={title} setTitle={setTitle} price={price} 
+        setPrice={setPrice} description={description} setDescription={setDescription}/>
             <Link to={`/product/${thisProduct._id}`}>Back</Link>
         </div>
     )

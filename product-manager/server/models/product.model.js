@@ -7,9 +7,7 @@ const ProductSchema = new mongoose.Schema({
 		minlength: [2, 'Product tile must be at least 2 characters long']
 	},
 	price: {
-		type: Number,
-		
-		// required: [true, 'price is a required field']
+		type: Number
 	},
 	description : {
 		type: String ,
