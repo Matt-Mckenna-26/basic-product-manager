@@ -15,10 +15,6 @@ const Main = () => {
         .then(res => setProducts(res.data.products))
         .catch(err => console.log(err))
     }, [products])
-
-    const removeFromDom = productId => {
-        setProducts(products.filter(product => product._id !== productId))
-    }
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:8000/api/products/new', {
@@ -32,8 +28,8 @@ const Main = () => {
     return(
         <>
         <ProductForm handleSubmit={handleSubmit} title={title} setTitle={setTitle} price={price} 
-        setPrice={setPrice} description={description} setDescription={setDescription}/>
-        <ProductList products={products} removeFromDom={removeFromDom}/>
+        setPrice={setPrice} description={description} setDescription={setDescription} verb={'Add'} item= {'product'}/>
+        <ProductList products={products} setProducts={setProducts} />
         </>
     )
 }

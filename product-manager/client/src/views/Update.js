@@ -32,7 +32,7 @@ const Update = (props) => {
     return(
         <div>
             <ProductForm handleSubmit={handleSubmit} title={title} setTitle={setTitle} price={price} 
-        setPrice={setPrice} description={description} setDescription={setDescription}/>
+        setPrice={setPrice} description={description} setDescription={setDescription} verb={'Update'} item={`${thisProduct.title}`}/>
             <Link to={`/product/${thisProduct._id}`}>Back</Link>
         </div>
     )

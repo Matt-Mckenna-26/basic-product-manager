@@ -19,7 +19,7 @@ const ProductDetail = (props) => {
                 <li>Price: ${thisProduct.price}</li>
                 <li>Description: {thisProduct.description}</li>
             </ul>
-            <Link to={`/product/${thisProduct._id}/edit`}>Edit Product</Link>
+            <Link to={`/product/${thisProduct._id}/edit`}>Edit {thisProduct.title}</Link>
             <Link to={'/'}>Home</Link>
         </div>
     )
